@@ -1,6 +1,5 @@
 #!../cli-ve/bin/python3
 import boto3
-import json
 import pprint
 
 devops = boto3.client('ec2')
