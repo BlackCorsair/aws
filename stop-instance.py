@@ -24,7 +24,7 @@ def shutdown_instance(instance_id, ec2):
 
 
 if __name__ == "__main__":
-    instance_id = 'i-0fe762bcfa85f7716'
+    instance_id = 'some-id'
     ec2 = boto3.client('ec2')
     instance = boto3.resource('ec2').Instance(instance_id)
     code = instance.state.get('Code')
