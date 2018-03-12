@@ -1,0 +1,8 @@
+---
+# Author: Jorge Hevia - jmhev@outlook.com
+# What does this role do?: this role starts an ec2 instance, then mysql and replicates
+#                         the content of the DB with it's master.
+- name: Starts mysql service
+  systemd:
+    state: started
+    name: mysql

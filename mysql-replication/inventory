@@ -1,0 +1,2 @@
+[nodes]
+aws-node1   ansible_host=xxxx.xxxx.xxxx.xxxx    ansible_user=user
