@@ -23,9 +23,6 @@ def checkStatus():
     io = cmd("mysql -u" + slave['user'] + " -p" + slave['pass'] +
              " -e \"show slave status\G;\" | grep -i Slave_SQL_Running")
 
-    io_error = cmd("mysql -u" + slave['user'] + " -p" + slave['pass'] +
-                   " -e \"show slave status\G;\" | grep -i Last_IO_Error")
-
     sql = cmd("mysql -u" + slave['user'] + " -p" + slave['pass'] +
               " -e \"show slave status\G;\" | grep Slave_IO_Running")
 
