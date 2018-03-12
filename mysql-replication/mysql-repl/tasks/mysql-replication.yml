@@ -3,4 +3,4 @@
 # What does this role do?: this role starts an ec2 instance, then mysql and replicates
 #                         the content of the DB with it's master.
 - name: Checks replication is up to date
-  shell: replication.sh '{{ master.host }}' '{{ master.user }}' '{{ master.pass }}' '{{ slave.user }}' '{{ slave.pass }}'
+  shell: replication.py '{{ master.host }}' '{{ master.user }}' '{{ master.pass }}' '{{ slave.user }}' '{{ slave.pass }}'
