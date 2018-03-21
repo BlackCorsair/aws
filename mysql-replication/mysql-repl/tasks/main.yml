@@ -4,7 +4,7 @@
 #                         the content of the DB with it's master.
 
 # TO-DO: DO NOT EXECUTE IF MASTER INSTANCE IS DOWN
-- include: start-instances.yml
-- include: start-mysql.yml
+#- include: start-instances.yml
+#- include: start-mysql.yml
 - include: mysql-replication.yml
-- include: stop-instances.yml
+#- include: stop-instances.yml

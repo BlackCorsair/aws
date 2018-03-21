@@ -17,10 +17,10 @@ region: eu-west-1
 
 # MYSQL user:passwords
 master: 
-  - user: user
-  - pass: 2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19
-  - host: host.name.com
-slave_pass:
-  - user: user
-  - pass: 2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19
-  - host: host.name.com
+  user: "user"
+  pass: "2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19"
+  host: "host.name.com"
+slave:
+  user: "user"
+  pass: "2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19"
+  host: "host.name.com"
