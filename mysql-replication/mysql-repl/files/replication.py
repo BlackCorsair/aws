@@ -53,8 +53,8 @@ def checkStatus():
         return 1
     else:
         print("There are errors")
-        return -1
         restoreReplication()
+        return -1
 
 
 '''
