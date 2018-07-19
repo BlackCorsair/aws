@@ -3,12 +3,25 @@
 # What does this playbook do: this playbook backup a specified database in a S3 bucket
 
 - name: Makes a MySQL database dump
-  shell: mysqldump -u"{{ dbadmin }}" -p"{{ dbpass }}" "{{ database }}" > /tmp/$(2018/07/18-10:24)-"{{ database }}"-"{{ node }}".sql
-  when: "{{ dbtype }}" == "mysql"
+  shell: mysqldump -u"{{ dbadmin }}" -p"{{ dbpass }}" "{{ database }}" > /tmp/$(date +'%Y-%m-%d-%H:%M')-{{ database }}-{{ node }}.sql
+
+- name: Registers variable
+  shell: ls /tmp/$(date +'%Y-%m-%d-%H:%M')-{{ database }}-{{ node }}.sql
+  register: file
+- debug: 
+    msg: "{{ file.stdout }}"
+
+- name: List keys simple
+  aws_s3:
+    bucket: "{{ bucket }}"
+    mode: list
+  register: keys
+- debug:
+    msg: "{{keys.s3_keys}}"
 
 - name: Uploads the database backup to the S3 specified
   aws_s3:
-    bucket:
-      bucket: "{{ bucket }}"
-      object: "{{ object }}"
-      mode: put
+    bucket: "{{ bucket }}"
+    object: "{{ object }}"
+    src: "2018-07-18-13:24-masterticket_usuarios-node1.sql"
+    mode: put

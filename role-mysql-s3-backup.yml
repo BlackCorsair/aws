@@ -1,0 +1,13 @@
+---
+# Author: Jorge Hevia @ jmhev@outlook.com
+# What does this playbook do: this playbook calls the role mysql-s3-backup
+- hosts: all
+  become: true
+  vars:
+    database: "masterticket_usuarios"
+    dbadmin: "root"
+    dbpass: "Welcome1!"
+    bucket: "mysql-s3-test"
+    object: "database.sql"
+  roles:
+    - mysql-s3-backup

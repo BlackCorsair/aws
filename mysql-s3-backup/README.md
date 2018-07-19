@@ -7,7 +7,6 @@ Modify the variables:
 * **database**
 * **dbadmin**
 * **dbpass**
-* **dbtype**
 * **node** _(optional)_
 * **bucket** 
 * **object** 
