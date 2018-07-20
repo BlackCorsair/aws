@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/opt/s3upload/venv/bin/python3
 import subprocess
 import sys
 
@@ -32,8 +32,8 @@ class Backup:
            -b bucket -> specifies the S3 bucket name
         @@@@ example @@@@
 
-           mysql-s3-backup.sh -u root -p nein -n pre1\
-            -d users -b db-backups -o dbs3.sql
+           mysql-s3-backup.sh -u root -p nein \
+-d usersdb -b s3-bucket-backups
 
         #######################
             """)
@@ -42,13 +42,13 @@ class Backup:
         argv = sys.argv
         if len(argv) == 9:
             for i, arg in enumerate(argv):
-                if '-d' in arg:
+                if '-d' == arg:
                     self.database = argv[i + 1]
-                if '-b' in arg:
+                if '-b' == arg:
                     self.bucket = argv[i + 1]
-                if '-u' in arg:
+                if '-u' == arg:
                     self.user = argv[i + 1]
-                if '-p' in arg:
+                if '-p' == arg:
                     self.password = argv[i + 1]
             self.MySQLDump()
             self.UploadS3()
