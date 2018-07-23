@@ -58,10 +58,10 @@ class Backup:
     def MySQLDump(self):
         date = subprocess.getoutput("date +%Y%m%d-%H%M")
         self.file = "/tmp/" + date + "-" + self.database\
-            + "-" + self.node + ".sql"
+            + "-" + self.node + ".sql.gz"
         call = "mysqldump -u" + \
             str(self.user) + " -p" + str(self.password) + \
-            " " + str(self.database) + " > " + self.file
+            " " + str(self.database) + " | gzip > " + self.file
         subprocess.call(call, shell=True, stdout=subprocess.DEVNULL)
 
     def UploadS3(self):
