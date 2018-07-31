@@ -1,4 +1,4 @@
-#!/opt/s3upload/venv/bin/python3
+#!/home/jhevia/github/aws/venv/bin/python3
 import subprocess
 import sys
 
@@ -58,7 +58,7 @@ class Backup:
 
     def GetVariables(self):
         argv = sys.argv
-        if len(argv) == 9:
+        if len(argv) == 5:
             for i, arg in enumerate(argv):
                 if '-d' == arg:
                     self.database = argv[i + 1]
@@ -85,8 +85,9 @@ class Backup:
     def PG_dump(self):
         date = subprocess.getoutput("date +%Y%m%d-%H%M")
         self.file = "/tmp/" + date + "-" + self.database\
-            + "-" + self.node + ".sql.gz"
-        call = "pg_dump " + str(self.database) + " | gzip > " + self.file
+            + "-" + self.node + "-postgres.sql.gz"
+        call = "/usr/pgsql-9.5/bin/pg_dump -U postgres " + \
+            str(self.database) + " | gzip > " + self.file
         subprocess.call(call, shell=True, stdout=subprocess.DEVNULL)
 
     '''
